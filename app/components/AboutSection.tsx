@@ -38,13 +38,13 @@ function VideoCard() {
 
 function AboutContent() {
   return (
-    <div className="flex flex-col h-full justify-between gap-6 md:gap-8 lg:gap-0 w-full min-w-0">
+    <div className="flex flex-col h-full justify-between gap-3 md:gap-5 lg:gap-0 w-full min-w-0">
       <div className="w-full">
         <span className="uppercase tracking-[2px] text-[#BC512B] font-bold text-sm block mb-3 sm:mb-4">
           COMPANY ABOUT US
         </span>
 
-        <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-[#18202F] leading-[1.2] tracking-tight break-words">
+        <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-[#18202F] ">
           Crafting Elegant Window Solutions With Precision & Care
         </h2>
 
@@ -66,7 +66,7 @@ function AboutContent() {
         </button>
       </div>
 
-      <div className="mt-6 lg:mt-8 pt-4 sm:pt-6 border-t border-gray-100 w-full">
+      <div className="mt-3 lg:mt-4 pt-2 sm:pt-3 border-t border-gray-100 w-full">
         <p className="text-sm font-bold leading-snug text-[#18202F] max-w-xl break-words">
           A Dedicated Team Of Designers, Installers, And Consultants With Years Of 
           Experience In Residential And Commercial Window Treatments.
@@ -76,10 +76,10 @@ function AboutContent() {
   );
 }
 
-export default function AboutUsHero() {
+export default function AboutUs() {
   return (
-    <div className="w-full bg-[#f4f4f4] pt-4 sm:pt-8 overflow-x-hidden">
-      <section className="w-full bg-white max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 py-12 sm:py-16 overflow-x-hidden">
+    <div id='about' className="w-full bg-[#f4f4f4] pt-4 sm:pt-8 overflow-x-hidden">
+      <section  className="w-full bg-white max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 py-12 sm:py-16 overflow-x-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-8 lg:gap-0 w-full">
           
           <div className="lg:col-span-3 lg:border-r lg:border-gray-200 lg:pr-8 flex flex-col justify-between gap-6 sm:gap-8 lg:gap-0 min-h-fit lg:min-h-0 w-full min-w-0">

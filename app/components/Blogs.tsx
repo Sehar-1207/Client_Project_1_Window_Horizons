@@ -57,8 +57,8 @@ function MetaBadge({ icon: Icon, text }: { icon: any; text: string }) {
 function ArticleRow({ article }: { article: Article }) {
   return (
     <div className="flex flex-col-reverse md:flex-row items-center gap-6 md:gap-8 lg:gap-12 py-6 sm:py-8 w-full overflow-hidden">
-      <div className="w-full md:w-3/5 flex flex-col items-start min-w-0 mt-4 md:mt-0">
-        <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 w-full">
+      <div className="w-full md:w-3/5 flex flex-col items-start min-w-0 mt-2 md:mt-0">
+        <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-2 w-full">
           <MetaBadge icon={User} text={article.author} />
           <MetaBadge icon={Tag} text={article.category} />
           <MetaBadge icon={Calendar} text={article.date} />
@@ -96,9 +96,9 @@ function ArticleRow({ article }: { article: Article }) {
 
 export default function BlogAndNews() {
   return (
-    <div className="w-full bg-white overflow-x-hidden">
-      <section className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 py-8 sm:py-12">
-        <div className="text-center mb-6 sm:mb-10 max-w-full px-2">
+    <div id='blog' className="w-full bg-white overflow-x-hidden">
+      <section  className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-24 py-5 sm:py-12">
+        <div className="text-center mb-3 sm:mb-5 max-w-full px-2">
           <span className="uppercase tracking-[2px] text-[#BC512B] font-bold text-xs sm:text-sm block mb-1">
             BLOG & NEWS
           </span>

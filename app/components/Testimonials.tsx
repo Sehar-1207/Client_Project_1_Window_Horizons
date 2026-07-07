@@ -47,7 +47,7 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="bg-white py-16 px-4 md:py-24">
+    <section id='testimonials' className="bg-white py-16 px-4 md:py-24">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 md:mb-16">
           <span className="text-xs font-semibold text-orange-600 uppercase tracking-wider block mb-2">

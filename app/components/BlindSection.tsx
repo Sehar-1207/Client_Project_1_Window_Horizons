@@ -50,20 +50,20 @@ export default function WindowSolutions() {
   const progressPercentage = maxIndex > 0 ? (currentIndex / maxIndex) * 100 : 100;
 
   return (
-    <section className="bg-[#F8F9FA] w-full overflow-hidden py-16 sm:py-24">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
+    <section id="blinds" className="bg-[#F8F9FA] w-full overflow-hidden py-3 sm:py-14">
+      <div className="max-w-[1440px] mx-auto px-2 sm:px-3 lg:px-8 xl:px-15">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12 sm:mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-8 sm:mb-10">
           <div className="lg:col-span-7 flex flex-col gap-3">
-            <span className="text-[#BC512B] text-xs font-bold tracking-widest uppercase">
+            <span className="text-[#BC512B] text-xs font-bold uppercase">
               What We Do
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-[#141E28] tracking-tight leading-tight max-w-xl">
+            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-[#141E28] max-w-xl">
               Smart Window Solutions For Homes
             </h2>
           </div>
           <div className="lg:col-span-5">
-            <p className="text-gray-500 text-xs sm:text-sm leading-relaxed font-medium">
+            <p className="text-gray-500 text-xs sm:text-sm font-medium">
               Window Horizons Is An Expert At Working With Any Style Window Including Bay Windows,
               Skylights, Floor To Ceiling, And More. We Can Provide You With A Wide Range Of Quality
               Products. We Are An Authorized Hunter Douglas Window Treatment.
@@ -98,7 +98,7 @@ export default function WindowSolutions() {
                   </div>
                   
                   <div className="absolute left-4 right-4 bottom-0 translate-y-1/2 z-20 flex justify-center">
-                    <div className="bg-white w-full py-4 px-4 text-center rounded-xl shadow-md border-b-2 border-transparent hover:border-[#BC512B] transition-all duration-300">
+                    <div className="bg-white w-full py-2 px-4 text-center rounded-xl shadow-md border-b-2 border-transparent hover:border-[#BC512B] transition-all duration-300">
                       <span className="text-[#141E28] text-xs sm:text-sm md:text-base font-bold tracking-tight block whitespace-nowrap overflow-hidden text-ellipsis">
                         {item.title}
                       </span>
@@ -110,7 +110,7 @@ export default function WindowSolutions() {
           </div>
         </div>
 
-        <div className="flex items-center justify-between mt-6 w-full gap-8">
+        <div className="flex items-center justify-between mt-2 w-full gap-8">
           <button
             onClick={handlePrev}
             disabled={currentIndex === 0}

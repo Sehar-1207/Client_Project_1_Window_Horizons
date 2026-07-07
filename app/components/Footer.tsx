@@ -135,7 +135,7 @@ export default function Footer() {
 
         <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 py-12 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] sm:text-xs text-gray-300 font-medium tracking-wide">
           <p className="text-center sm:text-left">
-            © 2026 <span className="text-[#BC512B]">Company Name</span>. All rights reserved.
+            © 2026 <span className="text-[#BC512B]">TechXen solutions</span>. All rights reserved.
           </p>
 
           <div className="flex items-center gap-3 sm:gap-4">

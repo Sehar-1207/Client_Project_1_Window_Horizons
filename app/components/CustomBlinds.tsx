@@ -42,7 +42,7 @@ const items = [
 
 export default function CustomBlindsShowcase() {
   return (
-    <section className="w-full bg-white py-12 sm:py-16 px-4 sm:px-6 lg:px-16 xl:px-24 overflow-x-hidden">
+    <section id='shades' className="w-full bg-white py-12 sm:py-16 px-4 sm:px-6 lg:px-16 xl:px-24 overflow-x-hidden">
       <div className="text-center mb-10 sm:mb-16 max-w-3xl mx-auto px-2">
         <span className="text-xs font-bold uppercase tracking-[3px] text-[#BC512B] block mb-3">
           SELECTED WORK

@@ -63,7 +63,7 @@ function FeatureCard({
   description,
 }: FeatureCardProps) {
   return (
-    <div className="border-t border-gray-200 pt-4 flex flex-col gap-2">
+    <div className="border-t border-gray-200 pt-2 flex flex-col gap-2">
       <div className="w-8 h-8 rounded-full border border-gray-200 bg-gray-50 flex items-center justify-center">
         <Icon className="w-4 h-4 text-[#1A1A1A] stroke-[1.5]" />
       </div>
@@ -81,9 +81,9 @@ function FeatureCard({
 
 export default function WhyChooseUs() {
   return (
-    <section className="max-w-[1440px] mx-auto bg-white px-6 py-12 lg:px-16 xl:px-24">
+    <section id="services" className="max-w-[1440px] mx-auto bg-white px-6 py-3 lg:px-4 xl:px-10">
 
-      <div className="text-center mb-12">
+      <div className="text-center mb-3">
         <span className="block text-xs font-bold uppercase tracking-[3px] text-[#BC512B] mb-3">
           SMART & CREATIVE
         </span>
