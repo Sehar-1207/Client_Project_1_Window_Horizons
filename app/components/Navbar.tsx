@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
@@ -22,11 +22,24 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   return (
-    <header className="sticky top-0 w-full bg-white/90 backdrop-blur-md border-b border-gray-100 z-50 transition-all duration-300">
-      <nav className="flex items-center justify-between px-6 sm:px-10 py-4 max-w-[1440px] mx-auto w-full">
-        
-        <Link href="#home" className="flex items-center gap-3 z-50 group">
+    <header className="sticky top-0 w-full bg-white border-b border-gray-100 z-50">
+      <nav className="flex items-center justify-between px-6 sm:px-10 py-4 max-w-[1440px] mx-auto w-full relative z-50 bg-white">
+        <Link href="#home" className="flex items-center gap-3 group">
           <div className="relative w-10 h-10 overflow-hidden rounded-lg shrink-0 transition-transform group-hover:scale-105">
             <Image
               src={logoImg}
@@ -36,7 +49,7 @@ export default function Navbar() {
               priority
             />
           </div>
-          <span className="text-gray-800 text-sm font-extrabold tracking-wider sm:text-base">
+          <span className="text-[#0B2545] text-sm font-extrabold tracking-wider sm:text-base transition-colors duration-200 group-hover:text-[#BC512B]">
             WINDOW HORIZONS
           </span>
         </Link>
@@ -46,7 +59,7 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className="relative py-2 hover:text-[#BC512B] transition-colors duration-200 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#BC512B] hover:after:w-full after:transition-all after:duration-300"
+              className="relative py-2 text-[#0B2545] hover:text-[#BC512B] transition-colors duration-200 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#BC512B] hover:after:w-full after:transition-all after:duration-300"
             >
               {link.name}
             </Link>
@@ -60,36 +73,62 @@ export default function Navbar() {
         </div>
 
         <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden p-2 text-gray-700 hover:text-gray-900 focus:outline-none z-50 rounded-lg hover:bg-gray-50 transition-colors"
-          aria-label="Toggle Menu"
+          onClick={() => setIsOpen(true)}
+          className="lg:hidden p-2 text-gray-700 hover:text-[#BC512B] focus:outline-none rounded-lg transition-colors"
+          aria-label="Open Menu"
         >
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          <Menu className="w-6 h-6" />
         </button>
       </nav>
 
       <div
-        className={`lg:hidden fixed inset-0 bg-white z-40 flex flex-col justify-between p-8 pt-28 transform transition-transform duration-300 ease-in-out w-full h-screen ${
-          isOpen ? "translate-x-0" : "translate-x-full"
+        className={`lg:hidden fixed inset-0 bg-white z-[55] flex flex-col justify-between px-8 pb-10 pt-4 w-full h-[100dvh] overflow-hidden overscroll-behavior-none transition-transform duration-300 ease-in-out ${
+          isOpen ? "translate-x-0" : "translate-x-full pointer-events-none invisible"
         }`}
+        onTouchMove={(e) => e.preventDefault()}
       >
-        <div className="flex flex-col gap-6 overflow-y-auto max-h-[65vh] py-2">
+        <div className="flex items-center justify-between w-full py-2 border-b border-transparent group">
+          <Link href="#home" onClick={() => setIsOpen(false)} className="flex items-center gap-3">
+            <div className="relative w-10 h-10 overflow-hidden rounded-lg shrink-0">
+              <Image
+                src={logoImg}
+                alt="Window Horizons Logo"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+            <span className="text-[#0B2545] text-sm font-extrabold tracking-wider hover:text-[#BC512B] transition-colors duration-200">
+              WINDOW HORIZONS
+            </span>
+          </Link>
+          
+          <button
+            onClick={() => setIsOpen(false)}
+            className="p-2 text-gray-700 hover:text-[#BC512B] focus:outline-none transition-colors"
+            aria-label="Close Menu"
+          >
+            <X className="w-6 h-6" />
+          </button>
+        </div>
+
+        <div className="flex flex-col w-full mt-6 overflow-hidden">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="text-xl font-bold tracking-wide text-gray-800 hover:text-[#BC512B] transition-colors py-2 border-b border-gray-50"
+              className="text-sm font-black tracking-wider text-[#0B2545] hover:text-[#BC512B] active:text-[#BC512B] transition-colors duration-200 py-3.5 border-b border-gray-100/70 last:border-b-0 text-left"
             >
               {link.name}
             </Link>
           ))}
         </div>
 
-        <div className="mt-auto pb-10 w-full">
+        <div className="w-full mt-auto">
           <button 
             onClick={() => setIsOpen(false)}
-            className="w-full bg-[#BC512B] text-white hover:bg-[#a94824] py-4 rounded-full text-xs font-bold tracking-widest shadow-md transition-colors duration-200"
+            className="w-full bg-[#BC512B] text-white hover:bg-[#a94824] active:bg-[#a94824] py-4 rounded-full text-xs font-black tracking-widest shadow-md transition-colors duration-200"
           >
             BOOK AN APPOINTMENT
           </button>

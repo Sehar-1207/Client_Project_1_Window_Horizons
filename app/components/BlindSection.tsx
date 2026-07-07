@@ -39,6 +39,13 @@ export default function WindowSolutions() {
 
   const maxIndex = Math.max(0, solutions.length - maxVisibleCards);
 
+  // Safely clamp index boundaries when resizing viewport
+  useEffect(() => {
+    if (currentIndex > maxIndex) {
+      setCurrentIndex(maxIndex);
+    }
+  }, [maxVisibleCards, maxIndex, currentIndex]);
+
   const handlePrev = () => {
     setCurrentIndex((prev) => Math.max(0, prev - 1));
   };
@@ -81,24 +88,24 @@ export default function WindowSolutions() {
               {solutions.map((item) => (
                 <div
                   key={item.id}
-                  className="relative shrink-0 flex flex-col items-center"
+                  className="relative shrink-0 flex flex-col items-center group"
                   style={{
                     width: `calc((100% - ${(maxVisibleCards - 1) * 24}px) / ${maxVisibleCards})`,
                   }}
                 >
-                  <div className="relative w-full rounded-[24px] overflow-hidden group aspect-[4/5] z-0 shadow-sm">
+                  <div className="relative w-full rounded-[24px] overflow-hidden aspect-[4/5] z-0 shadow-sm">
                     <Image
                       src={item.image}
                       alt={item.title}
                       fill
-                      sizes="(max-w-640px) 100vw, (max-w-1024px) 50vw, 25vw"
+                      sizes="(max-w: 640px) 100vw, (max-w: 1024px) 50vw, 25vw"
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       priority
                     />
                   </div>
                   
                   <div className="absolute left-4 right-4 bottom-0 translate-y-1/2 z-20 flex justify-center">
-                    <div className="bg-white w-full py-2 px-4 text-center rounded-xl shadow-md border-b-2 border-transparent hover:border-[#BC512B] transition-all duration-300">
+                    <div className="bg-white w-full py-2 px-4 text-center rounded-xl shadow-md border-b-2 border-transparent group-hover:border-[#BC512B] transition-all duration-300">
                       <span className="text-[#141E28] text-xs sm:text-sm md:text-base font-bold tracking-tight block whitespace-nowrap overflow-hidden text-ellipsis">
                         {item.title}
                       </span>
@@ -128,11 +135,8 @@ export default function WindowSolutions() {
             <motion.div
               className="absolute left-0 top-0 bottom-0 bg-[#BC512B] rounded-full"
               initial={{ width: "0%" }}
-              animate={{ width: `${progressPercentage}%` }}
+              animate={{ width: `${maxIndex > 0 ? 33.33 + (progressPercentage * 0.6667) : 100}%` }}
               transition={{ type: "spring", stiffness: 120, damping: 20 }}
-              style={{
-                width: maxIndex > 0 ? `calc(33.33% + ${progressPercentage * 0.6667}%)` : "100%"
-              }}
             />
           </div>
 

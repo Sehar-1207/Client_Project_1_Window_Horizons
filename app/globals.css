@@ -1,15 +1,1 @@
 @import "tailwindcss";
-
-@utility bg-btn-brand {
-  background-color: #b9592e;
-  color: #ffffff;
-  transition: background-color 0.3s ease;
-  
-  &:hover {
-    background-color: #9c4520;
-  }
-}
-
-@utility text-brand-primary {
-  color: #b9592e;
-}

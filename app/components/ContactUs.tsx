@@ -17,41 +17,61 @@ export default function ContactUs() {
   ];
 
   return (
-    <div id='contact' className="flex flex-col lg:flex-row min-h-screen w-full bg-[#111] text-white font-sans selection:bg-orange-600">
-      <div className="relative w-full lg:w-[75%] flex flex-col justify-center p-6 sm:p-10 lg:p-16 min-h-fit lg:min-h-screen overflow-hidden">
+    <div id='contact' className="flex flex-col lg:flex-row lg:min-h-screen w-full bg-[#111] text-white font-sans selection:bg-[#BC512B]/30 overflow-hidden">
+      
+      {/* Left Form Panel Container */}
+      <div className="relative w-full lg:w-[75%] flex flex-col justify-center items-center px-4 py-12 sm:px-8 md:px-16 lg:py-20 xl:px-24 min-h-screen lg:min-h-0">
         <Image
           src={bg1} 
-          alt="Background" 
+          alt="Background Texture Overlay" 
           fill
           priority
+          sizes="(max-w: 1024px) 100vw, 75vw"
           className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
         />
-        <div className="absolute inset-0 bg-black/85" />
-        <div className="flex flex-col md:flex-row gap-6 sm:gap-8 w-full max-w-4xl z-10 isolation-auto">
-          <div className="flex flex-row md:flex-col gap-3 overflow-x-auto pb-3 md:pb-0 justify-start w-full md:w-auto shrink-0 [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="absolute inset-0 bg-black/90 backdrop-blur-[2px]" />
+        
+        {/* Core Content Engine Wrapper */}
+        <div className="flex flex-col md:flex-row gap-8 lg:gap-12 w-full max-w-4xl z-10 relative items-start">
+          
+          {/* Categories Tab Navigation Switcher */}
+          <div className="flex flex-row md:flex-col gap-3 overflow-x-auto pb-2 md:pb-0 justify-start w-full md:w-auto shrink-0 [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {categories.map((cat) => {
               const Icon = cat.icon;
+              const isActive = activeCategory === cat.id;
               return (
                 <button
                   key={cat.id}
+                  type="button"
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`flex flex-col items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-xl border transition-all duration-300 shrink-0 ${
-                    activeCategory === cat.id
-                      ? 'bg-white/10 border-white/30 shadow-lg'
-                      : 'bg-white/5 border-white/10 hover:bg-white/10'
+                  className={`flex flex-col items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-xl border transition-all duration-300 shrink-0 group focus:outline-none focus:ring-2 focus:ring-[#BC512B]/40 ${
+                    isActive
+                      ? 'bg-white/10 border-[#BC512B] shadow-xl shadow-[#BC512B]/5'
+                      : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20'
                   }`}
                 >
-                  <Icon className="w-5 h-5 md:w-6 md:h-6 mb-1.5 text-white/80" strokeWidth={1.5} />
-                  <span className="text-[10px] md:text-xs font-light text-white/90 tracking-wide text-center px-1 truncate w-full">{cat.name}</span>
+                  <Icon 
+                    className={`w-5 h-5 md:w-6 md:h-6 mb-2 transition-colors duration-300 ${
+                      isActive ? 'text-[#BC512B]' : 'text-gray-400 group-hover:text-white'
+                    }`} 
+                    strokeWidth={1.5} 
+                  />
+                  <span className={`text-[10px] md:text-xs font-medium tracking-wide text-center px-1 truncate w-full transition-colors duration-300 ${
+                    isActive ? 'text-white font-semibold' : 'text-gray-400 group-hover:text-white'
+                  }`}>
+                    {cat.name}
+                  </span>
                 </button>
               );
             })}
           </div>
+
+          {/* Contact Input Form Context */}
           <div className="flex-1 min-w-0 w-full">
-            <span className="text-xs font-semibold uppercase tracking-wider text-orange-600 block mb-2">
+            <span className="text-xs font-bold uppercase tracking-[3px] text-[#BC512B] block mb-2">
               GET IN TOUCH
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-5 sm:mb-6 lg:mb-8 text-white tracking-tight break-words">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 md:mb-8 text-white tracking-tight">
               Request Window Quote
             </h2>
 
@@ -61,13 +81,13 @@ export default function ContactUs() {
                   type="text"
                   placeholder="Your Name*"
                   required
-                  className="w-full bg-white/10 border border-white/10 rounded-md px-4 py-3 text-sm text-white placeholder-white/40 focus:outline-none focus:border-white/30 transition-colors"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#BC512B] focus:ring-1 focus:ring-[#BC512B]/40 transition-all duration-200"
                 />
                 <input
                   type="tel"
                   placeholder="Your Phone*"
                   required
-                  className="w-full bg-white/10 border border-white/10 rounded-md px-4 py-3 text-sm text-white placeholder-white/40 focus:outline-none focus:border-white/30 transition-colors"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#BC512B] focus:ring-1 focus:ring-[#BC512B]/40 transition-all duration-200"
                 />
               </div>
 
@@ -76,13 +96,13 @@ export default function ContactUs() {
                   type="email"
                   placeholder="Email Address*"
                   required
-                  className="w-full bg-white/10 border border-white/10 rounded-md px-4 py-3 text-sm text-white placeholder-white/40 focus:outline-none focus:border-white/30 transition-colors"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#BC512B] focus:ring-1 focus:ring-[#BC512B]/40 transition-all duration-200"
                 />
                 <input
                   type="text"
                   placeholder="Services Type*"
                   required
-                  className="w-full bg-white/10 border border-white/10 rounded-md px-4 py-3 text-sm text-white placeholder-white/40 focus:outline-none focus:border-white/30 transition-colors"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#BC512B] focus:ring-1 focus:ring-[#BC512B]/40 transition-all duration-200"
                 />
               </div>
 
@@ -90,33 +110,43 @@ export default function ContactUs() {
                 <textarea
                   placeholder="Write Your Message..."
                   rows={4}
-                  className="w-full bg-white/10 border border-white/10 rounded-md px-4 py-3 text-sm text-white placeholder-white/40 focus:outline-none focus:border-white/30 transition-colors resize-none"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#BC512B] focus:ring-1 focus:ring-[#BC512B]/40 transition-all duration-200 resize-none"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full sm:w-auto bg-orange-600 hover:bg-orange-700 text-white font-medium text-xs tracking-wider uppercase px-6 py-3.5 rounded-md transition-all duration-200 active:scale-95 shadow-md"
+                className="w-full sm:w-auto bg-[#BC512B] hover:bg-[#a34321] text-white font-semibold text-xs tracking-widest uppercase px-8 py-4 rounded-lg transition-all duration-200 active:scale-[0.98] shadow-md shadow-black/20"
               >
                 SUBMIT A MESSAGE
               </button>
             </form>
           </div>
         </div>
-        <div className="absolute bottom-4 left-4 z-10 hidden sm:block">
-          <button className="bg-blue-600 hover:bg-blue-700 p-3 rounded-full shadow-lg transition-transform hover:scale-105 flex items-center justify-center">
-            <Eye className="w-5 h-5 text-white" />
+        
+        {/* Floating Accessibility Action Module */}
+        <div className="absolute bottom-6 left-6 z-10 hidden lg:block">
+          <button 
+            type="button"
+            aria-label="View application configurations"
+            className="bg-neutral-800 border border-neutral-700 hover:border-neutral-600 p-3 rounded-full shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center group"
+          >
+            <Eye className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors duration-200" />
           </button>
         </div>
       </div>
-      <div className="relative w-full h-[200px] sm:h-[250px] lg:h-auto lg:w-[25%] shrink-0">
+
+      {/* Right Product Display Sidebar Component */}
+      <div className="relative w-full h-[250px] sm:h-[320px] lg:h-auto lg:w-[25%] shrink-0 border-t lg:border-t-0 lg:border-l border-white/5 bg-neutral-900">
         <Image
           src={bg} 
-          alt="Window Display Showcase" 
+          alt="Premium luxury tailored window blind sample showcase" 
           fill
-          className="object-cover"
+          sizes="(max-w: 1024px) 100vw, 25vw"
+          className="object-cover object-center transition-transform duration-1000 ease-out hover:scale-105"
         />
       </div>
+      
     </div>
   );
 }

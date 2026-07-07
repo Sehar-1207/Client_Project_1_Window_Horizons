@@ -47,7 +47,7 @@ const features = [
     icon: Layers3,
     title: "End-To-End Service",
     description:
-      "From consultation to after-sales support, we manage everything—so you don't have to.",
+      "From consultation to after-sales support, we manage everything so you don't have to.",
   },
 ];
 
@@ -57,22 +57,18 @@ type FeatureCardProps = {
   description: string;
 };
 
-function FeatureCard({
-  icon: Icon,
-  title,
-  description,
-}: FeatureCardProps) {
+function FeatureCard({ icon: Icon, title, description }: FeatureCardProps) {
   return (
-    <div className="border-t border-gray-200 pt-2 flex flex-col gap-2">
-      <div className="w-8 h-8 rounded-full border border-gray-200 bg-gray-50 flex items-center justify-center">
-        <Icon className="w-4 h-4 text-[#1A1A1A] stroke-[1.5]" />
+    <div className="border-t border-gray-200 pt-4 flex flex-col gap-2.5 group">
+      <div className="w-9 h-9 rounded-full border border-gray-200 bg-gray-50 flex items-center justify-center transition-colors duration-300 group-hover:bg-[#BC512B]/5 group-hover:border-[#BC512B]/20">
+        <Icon className="w-4 h-4 text-[#1A1A1A] stroke-[1.5] transition-colors duration-300 group-hover:text-[#BC512B]" />
       </div>
 
-      <h3 className="text-lg font-bold text-[#1A1A1A]">
+      <h3 className="text-lg font-bold text-[#1A1A1A] tracking-tight">
         {title}
       </h3>
 
-      <p className="text-xs sm:text-sm text-gray-500 leading-relaxed font-medium">
+      <p className="text-sm text-gray-500 leading-relaxed font-normal">
         {description}
       </p>
     </div>
@@ -81,46 +77,51 @@ function FeatureCard({
 
 export default function WhyChooseUs() {
   return (
-    <section id="services" className="max-w-[1440px] mx-auto bg-white px-6 py-3 lg:px-4 xl:px-10">
+    <section id="services" className="w-full bg-white px-4 py-6 sm:px-6 md:py-20 lg:px-8 xl:px-10">
+      <div className="max-w-[1280px] mx-auto">
+        
+        {/* Header Section */}
+        <div className="text-center mb-10 md:mb-16">
+          <span className="block text-xs font-bold uppercase tracking-[3px] text-[#BC512B] mb-2">
+            SMART & CREATIVE
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#1A1A1A] tracking-tight">
+            What Makes Us Different
+          </h2>
+        </div>
 
-      <div className="text-center mb-3">
-        <span className="block text-xs font-bold uppercase tracking-[3px] text-[#BC512B] mb-3">
-          SMART & CREATIVE
-        </span>
-
-        <h2 className="text-3xl lg:text-4xl font-bold text-[#1A1A1A]">
-          What Makes Us Different
-        </h2>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
-    
-        <div className="lg:col-span-7 flex flex-col justify-between">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-            {features.map((feature) => (
-              <div key={feature.title}>
+        {/* Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-12 lg:gap-8 xl:gap-16 items-center">
+      
+          {/* Features Column */}
+          <div className="order-2 lg:order-1 lg:col-span-7 xl:col-span-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8 md:gap-y-10">
+              {features.map((feature) => (
                 <FeatureCard
+                  key={feature.title}
                   icon={feature.icon}
                   title={feature.title}
                   description={feature.description}
                 />
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
 
-        <div className="lg:col-span-5 flex justify-center lg:justify-end">
-          <div className="relative w-full max-w-[480px] h-[400px] lg:h-full min-h-[450px] overflow-hidden rounded-tl-[70px] rounded-tr-[30px] rounded-br-[30px] rounded-bl-[30px] shadow-sm">
-            <Image
-              src={showcaseImage}
-              alt="Window blinds"
-              fill
-              priority
-              className="object-cover"
-            />
+          {/* Image Showcase Column */}
+          <div className="order-1 lg:order-2 lg:col-span-5 xl:col-span-4 w-full flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-[480px] aspect-square md:aspect-[4/5] lg:aspect-auto lg:h-[580px] overflow-hidden rounded-tl-[70px] rounded-tr-[30px] rounded-br-[30px] rounded-bl-[30px] shadow-sm">
+              <Image
+                src={showcaseImage}
+                alt="Premium tailored window blinds showcase"
+                fill
+                sizes="(max-w: 768px) 100vw, (max-w: 1024px) 50vw, 400px"
+                priority
+                className="object-cover object-center transition-transform duration-700 hover:scale-105"
+              />
+            </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import React from "react";
 import { User, Tag, Calendar } from "lucide-react";
 
 import articleImg1 from "../assets/service1.jpg";
@@ -85,6 +86,7 @@ function ArticleRow({ article }: { article: Article }) {
             src={article.image}
             alt={article.title}
             fill
+            sizes="(max-w: 768px) 100vw, (max-w: 1200px) 40vw, 500px"
             priority={article.id === 1}
             className="object-cover"
           />
@@ -96,8 +98,8 @@ function ArticleRow({ article }: { article: Article }) {
 
 export default function BlogAndNews() {
   return (
-    <div id='blog' className="w-full bg-white overflow-x-hidden">
-      <section  className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-24 py-5 sm:py-12">
+    <div id="blog" className="w-full bg-white overflow-x-hidden">
+      <section className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-24 py-5 sm:py-12">
         <div className="text-center mb-3 sm:mb-5 max-w-full px-2">
           <span className="uppercase tracking-[2px] text-[#BC512B] font-bold text-xs sm:text-sm block mb-1">
             BLOG & NEWS
@@ -109,7 +111,9 @@ export default function BlogAndNews() {
 
         <div className="flex flex-col w-full divide-y divide-gray-200 border-t border-b border-gray-200">
           {articles.map((article) => (
-            <ArticleRow key={article.id} article={article} />
+            <div key={article.id} className="w-full">
+              <ArticleRow article={article} />
+            </div>
           ))}
         </div>
       </section>

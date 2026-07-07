@@ -18,7 +18,7 @@ export default function Testimonials() {
       id: 1,
       logo: googleLogo,
       logoAlt: 'Google',
-      rating: 4,
+      rating: 5,
       text: '“Wanted To Use A Local Window Covering Company But Am Very Selective. Had The Best Experience With Meni Who Was Helpful With Selection And Extremely Timely With My Order And The Appt Prior To Ordering. Went With His Suggestions And Got The Hunter-Douglas Blinds And They Look Fantastic”.',
       name: 'Cameron Williamson',
       role: 'CEO',
@@ -28,7 +28,7 @@ export default function Testimonials() {
       id: 2,
       logo: yelpLogo,
       logoAlt: 'Yelp',
-      rating: 4,
+      rating: 5,
       text: '“Wanted To Use A Local Window Covering Company But Am Very Selective. Had The Best Experience With Meni Who Was Helpful With Selection And Extremely Timely With My Order And The Appt Prior To Ordering. Went With His Suggestions And Got The Hunter-Douglas Blinds And They Look Fantastic”.',
       name: 'Cody Fisher',
       role: 'CEO',
@@ -38,7 +38,7 @@ export default function Testimonials() {
       id: 3,
       logo: houzzLogo,
       logoAlt: 'Houzz',
-      rating: 4,
+      rating: 5,
       text: '“Wanted To Use A Local Window Covering Company But Am Very Selective. Had The Best Experience With Meni Who Was Helpful With Selection And Extremely Timely With My Order And The Appt Prior To Ordering. Went With His Suggestions And Got The Hunter-Douglas Blinds And They Look Fantastic”.',
       name: 'Dianne Russell',
       role: 'CEO',
@@ -47,34 +47,35 @@ export default function Testimonials() {
   ];
 
   return (
-    <section id='testimonials' className="bg-white py-16 px-4 md:py-24">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12 md:mb-16">
-          <span className="text-xs font-semibold text-orange-600 uppercase tracking-wider block mb-2">
+    <section id='testimonials' className="w-full bg-white py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 xl:px-16 overflow-hidden">
+      <div className="max-w-[1280px] mx-auto w-full">
+        
+        <div className="text-center mb-10 md:mb-16 max-w-3xl mx-auto">
+          <span className="text-xs font-bold uppercase tracking-[3px] text-[#BC512B] block mb-2">
             CONTRIBUTING TO THE SUCCESS
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A]">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#1A1A1A] tracking-tight">
             Our Clients Testimonial
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch w-full">
           {testimonials.map((item) => (
             <div
               key={item.id}
-              className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-2xl p-6 md:p-8 flex flex-col justify-between"
+              className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-2xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:shadow-slate-200/50 hover:border-slate-300/60 hover:-translate-y-1"
             >
               <div>
-                <div className="flex items-center justify-between gap-4 pb-6 mb-6 border-b border-[#E2E8F0]">
-                  <div className="h-17 flex items-center">
+                <div className="flex items-center justify-between gap-4 pb-5 mb-5 border-b border-[#E2E8F0]">
+                  <div className="h-8 relative w-[100px] flex items-center">
                     <Image
                       src={item.logo}
                       alt={item.logoAlt}
-                      height={34}
-                      className="h-full w-auto object-contain object-left max-w-[120px]"
+                      height={32}
+                      className="h-full w-auto object-contain object-left"
                     />
                   </div>
-                  <div className="flex items-center gap-0.5">
+                  <div className="flex items-center gap-0.5 shrink-0">
                     {[...Array(5)].map((_, index) => (
                       <Star
                         key={index}
@@ -88,24 +89,26 @@ export default function Testimonials() {
                   </div>
                 </div>
 
-                <p className="text-sm leading-relaxed text-[#475569] font-light mb-8">
+                <p className="text-sm leading-relaxed text-[#475569] font-normal mb-6">
                   {item.text}
                 </p>
               </div>
 
-              <div className="flex items-center gap-4">
-                <Image
-                  src={item.avatar}
-                  alt={item.name}
-                  width={48}
-                  height={48}
-                  className="w-12 h-12 rounded-full object-cover"
-                />
-                <div>
-                  <h4 className="text-base font-semibold text-[#0F172A]">
+              <div className="flex items-center gap-3.5 mt-auto pt-2">
+                <div className="relative w-12 h-12 rounded-full overflow-hidden border border-slate-200 shrink-0">
+                  <Image
+                    src={item.avatar}
+                    alt={item.name}
+                    fill
+                    sizes="48px"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="min-w-0">
+                  <h4 className="text-base font-bold text-[#1A1A1A] tracking-tight truncate">
                     {item.name}
                   </h4>
-                  <p className="text-xs text-[#94A3B8] tracking-wide font-medium uppercase mt-0.5">
+                  <p className="text-[10px] text-[#94A3B8] tracking-widest font-bold uppercase mt-0.5 truncate">
                     {item.role}
                   </p>
                 </div>
@@ -113,6 +116,7 @@ export default function Testimonials() {
             </div>
           ))}
         </div>
+        
       </div>
     </section>
   );
